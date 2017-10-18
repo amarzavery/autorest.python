@@ -23,5 +23,5 @@ class ByteWrapper(Model):
         'field': {'key': 'field', 'type': 'bytearray'},
     }
 
-    def __init__(self, field=None):
-        self.field = field
+    def __init__(self, **kwargs):
+        self.field = kwargs.get('field', None)

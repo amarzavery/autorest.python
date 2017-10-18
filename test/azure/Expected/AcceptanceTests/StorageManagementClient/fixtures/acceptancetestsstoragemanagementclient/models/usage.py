@@ -38,8 +38,8 @@ class Usage(Model):
         'name': {'key': 'name', 'type': 'UsageName'},
     }
 
-    def __init__(self, unit=None, current_value=None, limit=None, name=None):
-        self.unit = unit
-        self.current_value = current_value
-        self.limit = limit
-        self.name = name
+    def __init__(self, **kwargs):
+        self.unit = kwargs.get('unit', None)
+        self.current_value = kwargs.get('current_value', None)
+        self.limit = kwargs.get('limit', None)
+        self.name = kwargs.get('name', None)

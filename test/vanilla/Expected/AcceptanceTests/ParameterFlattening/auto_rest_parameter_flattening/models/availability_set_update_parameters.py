@@ -27,5 +27,5 @@ class AvailabilitySetUpdateParameters(Model):
         'tags': {'key': 'tags', 'type': '{str}'},
     }
 
-    def __init__(self, tags):
+    def __init__(self, tags, **kwargs):
         self.tags = tags

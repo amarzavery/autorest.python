@@ -23,5 +23,5 @@ class ClassOptionalWrapper(Model):
         'value': {'key': 'value', 'type': 'Product'},
     }
 
-    def __init__(self, value=None):
-        self.value = value
+    def __init__(self, **kwargs):
+        self.value = kwargs.get('value', None)

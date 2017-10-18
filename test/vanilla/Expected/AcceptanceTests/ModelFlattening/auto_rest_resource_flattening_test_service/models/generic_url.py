@@ -23,5 +23,5 @@ class GenericUrl(Model):
         'generic_value': {'key': 'generic_value', 'type': 'str'},
     }
 
-    def __init__(self, generic_value=None):
-        self.generic_value = generic_value
+    def __init__(self, **kwargs):
+        self.generic_value = kwargs.get('generic_value', None)

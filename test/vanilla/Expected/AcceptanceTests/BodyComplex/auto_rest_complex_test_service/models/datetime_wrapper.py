@@ -26,6 +26,6 @@ class DatetimeWrapper(Model):
         'now': {'key': 'now', 'type': 'iso-8601'},
     }
 
-    def __init__(self, field=None, now=None):
-        self.field = field
-        self.now = now
+    def __init__(self, **kwargs):
+        self.field = kwargs.get('field', None)
+        self.now = kwargs.get('now', None)

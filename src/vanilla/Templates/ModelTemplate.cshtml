@@ -115,7 +115,7 @@ else
 @if (Model.NeedsConstructor)
 { 
 @EmptyLine
-    @:def __init__(self@(Model.MethodParameterDeclaration())):
+    @:def __init__(self@(Model.ModelParameterDeclaration())):
     if (Model.HasParent)
     {
         @:super(@(Model.Name), self).__init__(@(Model.SuperParameterDeclaration()))

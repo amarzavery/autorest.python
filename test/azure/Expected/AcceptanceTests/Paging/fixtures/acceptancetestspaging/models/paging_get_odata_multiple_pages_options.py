@@ -23,6 +23,6 @@ class PagingGetOdataMultiplePagesOptions(Model):
     :type timeout: int
     """
 
-    def __init__(self, maxresults=None, timeout=30):
-        self.maxresults = maxresults
-        self.timeout = timeout
+    def __init__(self, **kwargs):
+        self.maxresults = kwargs.get('maxresults', None)
+        self.timeout = kwargs.get('timeout', 30)

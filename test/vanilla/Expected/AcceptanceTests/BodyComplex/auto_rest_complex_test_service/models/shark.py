@@ -51,8 +51,8 @@ class Shark(Fish):
         'fishtype': {'sawshark': 'Sawshark', 'goblin': 'Goblinshark', 'cookiecuttershark': 'Cookiecuttershark'}
     }
 
-    def __init__(self, length, birthday, species=None, siblings=None, age=None):
+    def __init__(self, length, birthday, **kwargs):
         super(Shark, self).__init__(species=species, length=length, siblings=siblings)
-        self.age = age
+        self.age = kwargs.get('age', None)
         self.birthday = birthday
         self.fishtype = 'shark'

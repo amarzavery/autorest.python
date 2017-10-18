@@ -23,6 +23,6 @@ class FirstParameterGroup(Model):
     :type query_one: int
     """
 
-    def __init__(self, header_one=None, query_one=30):
-        self.header_one = header_one
-        self.query_one = query_one
+    def __init__(self, **kwargs):
+        self.header_one = kwargs.get('header_one', None)
+        self.query_one = kwargs.get('query_one', 30)

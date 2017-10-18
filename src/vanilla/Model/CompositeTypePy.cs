@@ -291,11 +291,9 @@ namespace AutoRest.Python.Model
             return string.Join(", ", combinedDeclarations);
         }
 
-        public virtual string MethodParameterDeclaration()
+        public virtual string ModelParameterDeclaration()
         {
-            List<string> declarations = new List<string>();
             List<string> requiredDeclarations = new List<string>();
-            List<string> combinedDeclarations = new List<string>();
 
             foreach (var property in ComposedProperties.Except(ReadOnlyAttributes).Where(each => !each.IsPolymorphicDiscriminator))
             {
@@ -307,26 +305,13 @@ namespace AutoRest.Python.Model
                 {
                     requiredDeclarations.Add(property.Name);
                 }
-                else
-                {
-                    declarations.Add($"{property.Name}={property.DefaultValue}");
-                }
             }
 
-            if (requiredDeclarations.Any())
+            if (!requiredDeclarations.Any())
             {
-                combinedDeclarations.Add(string.Join(", ", requiredDeclarations));
+                return ", **kwargs";
             }
-            if (declarations.Any())
-            {
-                combinedDeclarations.Add(string.Join(", ", declarations));
-            }
-
-            if (!combinedDeclarations.Any())
-            {
-                return string.Empty;
-            }
-            return ", " + string.Join(", ", combinedDeclarations);
+            return ", " + string.Join(", ", requiredDeclarations) + ", **kwargs";
         }
 
         public string SubModelTypeList
@@ -393,7 +378,11 @@ namespace AutoRest.Python.Model
             {
                 return string.Format(CultureInfo.InvariantCulture, "{0}.{1} = None", objectName, property.Name);
             }
-            return string.Format(CultureInfo.InvariantCulture, "{0}.{1} = {1}", objectName, property.Name);
+            if (property.IsRequired && property.DefaultValue.RawValue.IsNullOrEmpty())
+            {
+                return string.Format(CultureInfo.InvariantCulture, "{0}.{1} = {1}", objectName, property.Name);    
+            }
+            return string.Format(CultureInfo.InvariantCulture, "{0}.{1} = kwargs.get('{1}', {2})", objectName, property.Name, property.DefaultValue);
         }
 
         public bool NeedsPolymorphicConverter => BaseIsPolymorphic && BaseModelType != null;

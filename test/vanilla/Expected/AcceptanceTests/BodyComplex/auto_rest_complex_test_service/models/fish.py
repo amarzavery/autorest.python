@@ -44,8 +44,8 @@ class Fish(Model):
         'fishtype': {'salmon': 'Salmon', 'shark': 'Shark'}
     }
 
-    def __init__(self, length, species=None, siblings=None):
-        self.species = species
+    def __init__(self, length, **kwargs):
+        self.species = kwargs.get('species', None)
         self.length = length
-        self.siblings = siblings
+        self.siblings = kwargs.get('siblings', None)
         self.fishtype = None

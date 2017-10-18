@@ -27,6 +27,6 @@ class CustomParameterGroup(Model):
         'tenant': {'required': True},
     }
 
-    def __init__(self, api_version, tenant):
+    def __init__(self, api_version, tenant, **kwargs):
         self.api_version = api_version
         self.tenant = tenant

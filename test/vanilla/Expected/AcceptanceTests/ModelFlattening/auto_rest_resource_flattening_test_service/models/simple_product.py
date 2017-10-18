@@ -52,8 +52,8 @@ class SimpleProduct(BaseProduct):
 
     capacity = "Large"
 
-    def __init__(self, product_id, max_product_display_name, description=None, generic_value=None, odatavalue=None):
+    def __init__(self, product_id, max_product_display_name, **kwargs):
         super(SimpleProduct, self).__init__(product_id=product_id, description=description)
         self.max_product_display_name = max_product_display_name
-        self.generic_value = generic_value
-        self.odatavalue = odatavalue
+        self.generic_value = kwargs.get('generic_value', None)
+        self.odatavalue = kwargs.get('odatavalue', None)

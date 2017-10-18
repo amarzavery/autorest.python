@@ -36,5 +36,5 @@ class RefColorConstant(Model):
 
     color_constant = "green-color"
 
-    def __init__(self, field1=None):
-        self.field1 = field1
+    def __init__(self, **kwargs):
+        self.field1 = kwargs.get('field1', None)

@@ -32,7 +32,7 @@ class ResourceCollection(Model):
         'dictionaryofresources': {'key': 'dictionaryofresources', 'type': '{FlattenedProduct}'},
     }
 
-    def __init__(self, productresource=None, arrayofresources=None, dictionaryofresources=None):
-        self.productresource = productresource
-        self.arrayofresources = arrayofresources
-        self.dictionaryofresources = dictionaryofresources
+    def __init__(self, **kwargs):
+        self.productresource = kwargs.get('productresource', None)
+        self.arrayofresources = kwargs.get('arrayofresources', None)
+        self.dictionaryofresources = kwargs.get('dictionaryofresources', None)

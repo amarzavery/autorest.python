@@ -23,5 +23,5 @@ class Product(Model):
         'properties': {'key': 'properties', 'type': 'ProductProperties'},
     }
 
-    def __init__(self, properties=None):
-        self.properties = properties
+    def __init__(self, **kwargs):
+        self.properties = kwargs.get('properties', None)

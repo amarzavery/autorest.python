@@ -21,6 +21,6 @@ class ParameterGroupingPostMultiParamGroupsSecondParamGroup(Model):
     :type query_two: int
     """
 
-    def __init__(self, header_two=None, query_two=30):
-        self.header_two = header_two
-        self.query_two = query_two
+    def __init__(self, **kwargs):
+        self.header_two = kwargs.get('header_two', None)
+        self.query_two = kwargs.get('query_two', 30)

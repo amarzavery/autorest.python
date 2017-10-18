@@ -30,10 +30,10 @@ class Error(Model):
         'parent_error': {'key': 'parentError', 'type': 'Error'},
     }
 
-    def __init__(self, status=None, message=None, parent_error=None):
-        self.status = status
-        self.message = message
-        self.parent_error = parent_error
+    def __init__(self, **kwargs):
+        self.status = kwargs.get('status', None)
+        self.message = kwargs.get('message', None)
+        self.parent_error = kwargs.get('parent_error', None)
 
 
 class ErrorException(HttpOperationError):

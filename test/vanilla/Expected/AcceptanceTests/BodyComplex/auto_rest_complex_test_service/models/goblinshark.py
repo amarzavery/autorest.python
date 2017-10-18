@@ -47,7 +47,7 @@ class Goblinshark(Shark):
         'jawsize': {'key': 'jawsize', 'type': 'int'},
     }
 
-    def __init__(self, length, birthday, species=None, siblings=None, age=None, jawsize=None):
+    def __init__(self, length, birthday, **kwargs):
         super(Goblinshark, self).__init__(species=species, length=length, siblings=siblings, age=age, birthday=birthday)
-        self.jawsize = jawsize
+        self.jawsize = kwargs.get('jawsize', None)
         self.fishtype = 'goblin'

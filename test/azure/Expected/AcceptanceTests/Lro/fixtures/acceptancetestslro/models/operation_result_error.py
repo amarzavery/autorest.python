@@ -26,6 +26,6 @@ class OperationResultError(Model):
         'message': {'key': 'message', 'type': 'str'},
     }
 
-    def __init__(self, code=None, message=None):
-        self.code = code
-        self.message = message
+    def __init__(self, **kwargs):
+        self.code = kwargs.get('code', None)
+        self.message = kwargs.get('message', None)

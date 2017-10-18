@@ -23,5 +23,5 @@ class HeaderCustomNamedRequestIdParamGroupingParameters(Model):
         'foo_client_request_id': {'required': True},
     }
 
-    def __init__(self, foo_client_request_id):
+    def __init__(self, foo_client_request_id, **kwargs):
         self.foo_client_request_id = foo_client_request_id

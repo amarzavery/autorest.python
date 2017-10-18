@@ -29,7 +29,7 @@ class StringWrapper(Model):
         'null': {'key': 'null', 'type': 'str'},
     }
 
-    def __init__(self, field=None, empty=None, null=None):
-        self.field = field
-        self.empty = empty
-        self.null = null
+    def __init__(self, **kwargs):
+        self.field = kwargs.get('field', None)
+        self.empty = kwargs.get('empty', None)
+        self.null = kwargs.get('null', None)

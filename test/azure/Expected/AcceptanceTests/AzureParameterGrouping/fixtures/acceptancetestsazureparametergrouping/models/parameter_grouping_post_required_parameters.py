@@ -30,8 +30,8 @@ class ParameterGroupingPostRequiredParameters(Model):
         'path': {'required': True},
     }
 
-    def __init__(self, body, path, custom_header=None, query=30):
+    def __init__(self, body, path, **kwargs):
         self.body = body
-        self.custom_header = custom_header
-        self.query = query
+        self.custom_header = kwargs.get('custom_header', None)
+        self.query = kwargs.get('query', 30)
         self.path = path
